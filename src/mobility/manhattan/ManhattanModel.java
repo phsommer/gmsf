@@ -74,8 +74,24 @@ public class ManhattanModel extends MobilityModel {
 		
 		// create the road network for the Manhattan mobility model
 		
+		
 		// calculate the block length
-		int blockLength = (int)Math.floor(Simulator.size/segments);
+		int blockLength = 0;
+		
+		if (Simulator.parameters.containsKey("BLOCKS")) {
+			try {
+				int blocks = Integer.valueOf(Simulator.parameters.getProperty("BLOCKS"));
+				blockLength = (int)Math.floor(Simulator.size/blocks);
+				
+			} catch (Exception e) {
+				System.err.println("Error parsing parameter BLOCKS: " + e.getMessage());
+			}
+		} else {
+			System.err.println("Number of blocks for Manhattan model not specified. Use the BLOCKS parameter to specify the number of blocks in one dimension.");
+			System.exit(0);
+			return;
+		}
+
 		
 		// create nodes
 		for (int i=0; i<=segments; i++) {
@@ -117,11 +133,6 @@ public class ManhattanModel extends MobilityModel {
 		
 		System.out.println("Nodes: " + graphNodes.size() + ", Edges: " + graphEdges.size());
 		
-		/*
-		PDFOutput pdf = new PDFOutput(new File("/home/psommer/Desktop/grid.pdf"), Simulator.size);
-		pdf.drawRoadNetwork(roadNetwork);
-		pdf.close();
-		*/
 		
 		if (Simulator.parameters.containsKey("NODES")) {
 			int nodesNumber = 0;

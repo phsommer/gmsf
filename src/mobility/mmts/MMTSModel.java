@@ -76,7 +76,8 @@ public class MMTSModel extends MobilityModel {
 	        input = new BufferedReader(new FileReader(Simulator.inputDirectory + "/mmts.dat"));
 	        // read the first line in the file
 	    } catch (Exception e) {
-			System.err.println(e.getLocalizedMessage());
+			System.err.println("MMTS trace file not found: " + e.getMessage());
+			System.exit(0);
 		}
 	    
 	    // read the first event

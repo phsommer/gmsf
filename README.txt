@@ -70,9 +70,16 @@ MODEL=<type of mobility model, valid values are RWP (Random Waypoint), MN (Manha
 FORMAT=<output format for the mobility traces, valid values are QUALNET, NAM, NS-2, XML, PDF>
 GUI=<1=enables/0=disables the graphical user interface>
 
-Example:
-$ java -jar gmsf.jar MODEL=RWP,NODES=100,TIME=1000,FORMAT=NAM
+------------------------------------------------------------------------
+Examples:
+------------------------------------------------------------------------
 
+- Random Waypoint
+$ java -jar gmsf.jar MODEL=RWP,SIMULATION_SIZE=1000,NODES=100,TIME=1000,FORMAT=NAM
+
+- Manhattan
+$ java -jar gmsf.jar MODEL=MN,SIMULATION_SIZE=1000,BLOCKS=10,NODES=100,TIME=1000,FORMAT=NAM
+where BLOCKS=<number of blocks in one dimension>
 
 ------------------------------------------------------------------------
  References
