@@ -216,8 +216,6 @@ public abstract class MobileNode extends GraphNode{
 		
 		if ((currentEvent.time + currentEvent.duration)<Simulator.time) currentEvent = null;
 		
-		
-		
 		return true;
 	};
 	
