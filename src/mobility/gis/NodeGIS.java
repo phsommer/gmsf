@@ -145,9 +145,6 @@ public class NodeGIS extends MobileNode {
 			
 			// check for other vehicles in front of this vehicle on the same street or on other streets on the route
 			
-			
-			
-
 			if (GISModel.enableTrafficLights) {
 				
 				double trafficLightDistance = Double.POSITIVE_INFINITY;
