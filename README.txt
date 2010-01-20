@@ -81,9 +81,13 @@ $ java -jar gmsf.jar MODEL=RWP,SIMULATION_SIZE=1000,NODES=100,TIME=1000,FORMAT=N
 $ java -jar gmsf.jar MODEL=MN,SIMULATION_SIZE=1000,BLOCKS=10,NODES=100,TIME=1000,FORMAT=NAM
 where BLOCKS=<number of blocks in one dimension>
 
+- MMTS mobility
+$ java -jar gmsf.jar MODEL=MMTS,SIMULATION_SIZE=3000,NODES=117,TIME=1000,INPUT_DIRECTORY=Rural/,FORMAT=NAM
+where INPUT_DIRECTORY=<dir> specifies the directory where the corresponding MMTS traces file (mmts.dat) is located
+
 - GIS based mobility model
-$ java -jar gmsf.jar MODEL=GIS,CAR_FOLLOWING=1,TRAFFIC_LIGHTS=1,SIMULATION_SIZE=3000,NODES=100,TIME=1000,INPUT_DIRECTORY=Rural/,FORMAT=NS-2
-where INPUT_DIRECTORY=<dir> specifies the directory where the corresponding road topology file is located
+$ java -jar gmsf.jar MODEL=GIS,CAR_FOLLOWING=1,TRAFFIC_LIGHTS=1,SIMULATION_SIZE=3000,NODES=100,TIME=2000,INPUT_DIRECTORY=Rural/,FORMAT=NAM
+where INPUT_DIRECTORY=<dir> specifies the directory where the corresponding road topology file (roads.dat) is located
 The CAR_FOLLOWING parameter specifies whether cars should respect a minimal distance to the car ahead. Cars do stop at larger intersections when the TRAFFIC_LIGHTS parameter is set to 1 (see the report for details).
  
 
