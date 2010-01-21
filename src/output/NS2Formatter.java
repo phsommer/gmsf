@@ -63,20 +63,31 @@ public class NS2Formatter extends TraceFormatter{
 	    	System.err.println(e.getLocalizedMessage());
 	    }
 		
-	    // output node initialization section
-		for (int id=0; id<Simulator.uniqueNodes; id++) {
-	    	try {
-    			writer.write("$node_(" + id + ") set X_ 0.0\n$node_(" + id + ") set Y_ 0.0\n$node_(" + id + ") set Z_ 0.0\n");
-    		} catch (Exception e) {
-    			System.err.println(e.getLocalizedMessage());
-    		}
-	    }
-		
-		// sort events by start time
+	    // sort events by start time
 		Collections.sort(Simulator.events, new EventComparatorByStartTime());
+	    
+	    // output node initialization section (t=0)
+	 	Iterator<Event> it = Simulator.events.iterator();
+		while (it.hasNext()) {
+			
+			Event event = it.next();
+			
+			if (event.time>0) break;
+			
+			if (event.type==Event.JOIN) {
+				try {
+					writer.write("$node_(" + event.node.getId() + ") set X_ " + event.x + "\n$node_(" + event.node.getId() + ") set Y_ " + event.y + "\n$node_(" + event.node.getId() + ") set Z_ 0.0\n");
+				} catch (Exception e) {
+					System.err.println(e.getMessage());
+				}
+			}
+			
+		}
+	    
+		
 		
 		// iteration over all events
-		Iterator<Event> it = Simulator.events.iterator();
+		it = Simulator.events.iterator();
 		while (it.hasNext()) {
 			
 			Event event = it.next();
