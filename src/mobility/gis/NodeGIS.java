@@ -274,8 +274,6 @@ public class NodeGIS extends MobileNode {
 		lastPositionXY = positionXY;
 		
 		
-		
-		
 		return super.next();
 		
 	}
